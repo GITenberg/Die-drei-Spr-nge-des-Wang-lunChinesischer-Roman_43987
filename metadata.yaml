@@ -1,0 +1,33 @@
+_repo: Die-drei-Spr-nge-des-Wang-lunChinesischer-Roman_43987
+_version: 0.0.1
+creator:
+  author:
+    agent_name: Döblin, Alfred
+    aliases:
+    - Doeblin, Alfred
+    - Deblin, A.
+    - Poot, Linke
+    - Doblin, Alfred
+    birthdate: 1878
+    deathdate: 1957
+    gutenberg_agent_id: '35387'
+    url: http://www.gutenberg.org/2009/agents/35387
+    wikipedia: http://de.wikipedia.org/wiki/Alfred_D%C3%B6blin
+description: ''
+gutenberg_issued: '2013-10-21'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '43987'
+language: de
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'Wang, Lun, -1774 -- Fiction'
+- !lcsh 'China -- History -- Qianlong, 1736-1795 -- Fiction'
+- !lcsh 'Historical fiction'
+- !lcsh 'Biographical fiction'
+- !lcc 'PT'
+- GITenberg
+title: 'Die drei Sprünge des Wang-lun: Chinesischer Roman'
+url: http://www.gutenberg.org/ebooks/43987

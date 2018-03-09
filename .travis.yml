@@ -1,0 +1,54 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo -H pip install git+https://github.com/gitenberg-dev/gitberg-build
+- sudo -H pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo -H pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: dP3rzBezKpW5S6yyXvwe32pGl11Sg39YrCNrv/65B7BXzeFZLdd7QCCx+H54Co0KBB4XHDrdjETp8v9VqDH7085v1UdR4Y4CCK8VzHm72ChcTKBGGsVUHot2jJH7gGtfr6ybamtp4e2cZlyjKFrXSv7xxsQm+rJy1VUf2po3KVBmRIoV7vJakcwphlfXgiZry0o3Nw11QhIuIVJt8hfpPgaNaAxf/p0zofItxJx6Nj+5LPHR0na/yMABKXJjNqjh884gcE8n2eh1WSdxYl6UK1CCLKURaC8UfLRQUH/uyVTTart/i+Ob7cjkIrCsYBZjWwtR+AzxKq2Nz+yPwOKaAISise+XXAUkZA43bpFKyxtlrTi2uX4omj/0EbJ9tO69AWUHBo66ILVu+jw0jT43tKn+tEY3RLXSniogqYKl5Tg1cL2xd/qwNXKMDzSGtV0/4SYXJpm8oivIrTjQa55OFYkVFtZuZc9hMnXmh6xroaGT9VDyY/7J2RqmSFS/4e/4urikEUdXPpJY61ZLnM+5Fa6Is7rut44icKnv7p4A8mWaf+7ezkxF5fX59u3729G5fHHLdPk8bXtQJFjl4+gcWaE12XBkDBKywusqO1DBwt11YfUonKn+2lyMMpXJpOZwBeCTs8y31sMHZ4Eq0+22tcVPyJJtBuO5xMBH1DvF/4c=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  on:
+    repo: GITenberg/Die-drei-Spr-nge-des-Wang-lunChinesischer-Roman_43987
+    tags: true
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
