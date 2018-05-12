@@ -17,6 +17,8 @@ creator:
     url: http://www.gutenberg.org/2009/agents/35387
     wikipedia: http://de.wikipedia.org/wiki/Alfred_D%C3%B6blin
 description: ''
+edition_identifiers:
+  edition_id: http://www.gutenberg.org/ebooks/43987#Die-drei-Spr-nge-des-Wang-lunChinesischer-Roman
 gutenberg_issued: '2013-10-21'
 gutenberg_type: Text
 identifiers:
